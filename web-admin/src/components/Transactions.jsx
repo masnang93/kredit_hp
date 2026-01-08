@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import api from '../api';
 import { CreditCard, CheckCircle, Search, RefreshCw, Calendar, Smartphone } from 'lucide-react';
 
 const Transactions = () => {
@@ -16,7 +16,7 @@ const Transactions = () => {
         try {
             // Fetch all loans and filter manually for PAID status
             // Ideal: Backend endpoint /loans?status=PAID
-            const res = await axios.get('http://localhost:3000/loans');
+            const res = await api.get('/loans');
             const paidLoans = res.data.filter(loan => loan.status === 'PAID').sort((a, b) => new Date(b.dueDate) - new Date(a.dueDate));
             setTransactions(paidLoans);
         } catch (err) {

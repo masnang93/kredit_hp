@@ -47,7 +47,7 @@ const LoanManager = () => {
 
     const fetchDevices = async () => {
         try {
-            const res = await axios.get('http://localhost:3000/devices');
+            const res = await api.get('/devices');
             setDevices(res.data);
         } catch (err) {
             console.error(err);
@@ -57,7 +57,7 @@ const LoanManager = () => {
     const fetchLoans = async (imei) => {
         setLoading(true);
         try {
-            const res = await axios.get(`http://localhost:3000/loans/device/${imei}`);
+            const res = await api.get(`/loans/device/${imei}`);
             setLoans(res.data);
         } catch (err) {
             console.error(err);
@@ -72,7 +72,7 @@ const LoanManager = () => {
 
         try {
             const total = parseFloat(amount) + parseFloat(interest || 0);
-            await axios.post('http://localhost:3000/loans', {
+            await api.post('/loans', {
                 imei: selectedDevice.imei,
                 loan: {
                     amount: parseFloat(amount), // Total Principal

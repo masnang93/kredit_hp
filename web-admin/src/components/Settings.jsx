@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../api';
 import { Shield, Bell, Lock, Globe, Save, CreditCard } from 'lucide-react';
 
 const Settings = () => {
@@ -15,7 +15,7 @@ const Settings = () => {
 
     const fetchConfig = async () => {
         try {
-            const res = await axios.get('http://localhost:3000/payments/config');
+            const res = await api.get('/payments/config');
             if (res.data) setPaymentConfig(res.data);
         } catch (error) {
             console.error('Error fetching config:', error);
@@ -24,7 +24,7 @@ const Settings = () => {
 
     const handleSaveConfig = async () => {
         try {
-            await axios.put('http://localhost:3000/payments/config', paymentConfig);
+            await api.put('/payments/config', paymentConfig);
             alert('Konfigurasi Pembayaran Tersimpan!');
         } catch (error) {
             alert('Gagal menyimpan konfigurasi');

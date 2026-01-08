@@ -21,11 +21,11 @@ const Dashboard = () => {
     const fetchDevices = async () => {
         try {
             setLoading(true);
-            const response = await axios.get('http://localhost:3000/devices');
+            const response = await api.get('/devices');
             setDevices(response.data);
 
             // Fetch Financial Stats
-            const stats = await axios.get('http://localhost:3000/loans/stats');
+            const stats = await api.get('/loans/stats');
             setFinStats(stats.data);
 
             setError(null);
@@ -49,7 +49,7 @@ const Dashboard = () => {
     const toggleLock = async (id, currentStatus) => {
         const newStatus = currentStatus === 'LOCKED' ? 'unlock' : 'lock';
         try {
-            await axios.put(`http://localhost:3000/devices/${id}/${newStatus}`);
+            await api.put(`/devices/${id}/${newStatus}`);
             fetchDevices(); // Refresh data
         } catch (err) {
             alert('Gagal mengubah status: ' + err.message);
@@ -63,7 +63,7 @@ const Dashboard = () => {
         setDetailContacts([]);
         setLoadingContacts(true);
         try {
-            const res = await axios.get(`http://localhost:3000/devices/${device.imei}/contacts`);
+            const res = await api.get(`/devices/${device.imei}/contacts`);
             setDetailContacts(res.data);
         } catch (err) {
             console.error(err);
@@ -81,7 +81,7 @@ const Dashboard = () => {
 
     const saveDetail = async () => {
         try {
-            await axios.put(`http://localhost:3000/devices/${selectedDetailDevice.imei}`, editFormData);
+            await api.put(`/devices/${selectedDetailDevice.imei}`, editFormData);
             alert('Data Pelanggan Berhasil Disimpan!');
             setIsEditingDetail(false);
             setSelectedDetailDevice({ ...editFormData }); // Update local view
@@ -93,7 +93,7 @@ const Dashboard = () => {
 
     const updateLimit = async (imei, newLimit) => {
         try {
-            await axios.put(`http://localhost:3000/devices/${imei}`, {
+            await api.put(`/devices/${imei}`, {
                 creditLimit: newLimit
             });
             alert('Limit berhasil diperbarui!');
@@ -268,7 +268,6 @@ const Dashboard = () => {
                         <p className="text-sm text-gray-400">{error} (Menampilkan data dummy)</p>
                     </div>
                 </div>
-            )}
             )}
 
             {/* Detail Modal */}

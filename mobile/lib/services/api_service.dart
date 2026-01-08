@@ -7,8 +7,7 @@ import 'package:flutter/foundation.dart'; // Import kIsWeb
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ApiService {
-  static String _baseUrl =
-      'http://10.41.40.53:3000'; // Default for Emulator/Device
+  static String _baseUrl = 'http://72.61.113.95'; // Default for Emulator/Device
 
   static String get baseUrl {
     if (kIsWeb) return 'http://localhost:3000';
@@ -73,6 +72,8 @@ class ApiService {
     }
 
     // Check session
+    await registerDevice(); // Ensure device exists in backend
+
     return (prefs.getString('deviceId')?.isNotEmpty ?? false) &&
         (prefs.getBool('isLoggedIn') ?? false);
   }
