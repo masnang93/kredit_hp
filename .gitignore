@@ -1,0 +1,24 @@
+# General
+.DS_Store
+.env
+.idea/
+.vscode/
+*.log
+
+# Backend / Web-Admin (Node.js)
+node_modules/
+dist/
+npm-debug.log
+yarn-error.log
+*.sqlite
+*.sqlite-journal
+
+# Mobile (Flutter)
+mobile/.dart_tool/
+mobile/.flutter-plugins
+mobile/.flutter-plugins-dependencies
+mobile/build/
+mobile/android/local.properties
+mobile/ios/.generated/
+mobile/ios/Flutter/Generated.xcconfig
+mobile/ios/Flutter/flutter_export_environment.sh

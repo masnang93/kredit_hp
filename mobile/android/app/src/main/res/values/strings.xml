@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Fintech Credit</string>
+    <string name="device_admin_label">Credit Lock Manager</string>
+    <string name="device_admin_description">Manages device locking for secured credit payments.
+        Allows the app to lock the device screen if payment obligations are not met.</string>
+</resources>
