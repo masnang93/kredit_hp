@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import api from '../api';
 import { Wifi, WifiOff, RefreshCw, Server, AlertTriangle, CheckCircle } from 'lucide-react';
 
@@ -20,7 +21,7 @@ const DebugPage = () => {
 
         // Use custom instance if URL is overridden (for testing different IPs)
         const apiToUse = urlOverride ?
-            require('axios').create({ baseURL: urlOverride }) : api;
+            axios.create({ baseURL: urlOverride }) : api;
 
         const baseUrl = urlOverride || api.defaults.baseURL;
         addLog(`Target URL: ${baseUrl}`);
@@ -111,8 +112,8 @@ const DebugPage = () => {
                             onClick={() => checkConnection()}
                             disabled={status === 'loading'}
                             className={`w-full py-3 rounded-xl font-bold flex items-center justify-center gap-2 transition-all ${status === 'loading' ? 'bg-gray-600 cursor-not-allowed' :
-                                    status === 'success' ? 'bg-green-600 hover:bg-green-500' :
-                                        'bg-blue-600 hover:bg-blue-500'
+                                status === 'success' ? 'bg-green-600 hover:bg-green-500' :
+                                    'bg-blue-600 hover:bg-blue-500'
                                 }`}
                         >
                             {status === 'loading' ? <RefreshCw className="animate-spin" /> : <Wifi />}
@@ -145,7 +146,7 @@ const DebugPage = () => {
                         {debugLog.length === 0 && <span className="text-gray-600 italic">No logs execution yet...</span>}
                         {debugLog.map((log, i) => (
                             <div key={i} className={`border-b border-white/5 pb-1 ${log.includes('Failed') || log.includes('error') ? 'text-red-400' :
-                                    log.includes('Success') ? 'text-green-400' : 'text-gray-300'
+                                log.includes('Success') ? 'text-green-400' : 'text-gray-300'
                                 }`}>
                                 {log}
                             </div>
