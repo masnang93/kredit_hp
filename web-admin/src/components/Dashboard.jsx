@@ -31,7 +31,7 @@ const Dashboard = () => {
             setError(null);
         } catch (err) {
             console.error(err);
-            setError('Gagal mengambil data perangkat. Pastikan server backend menyala.');
+            setError(`Gagal mengambil data perangkat. Error: ${err.message || err.toString()}`);
             // Mock data for demo if backend fails
             setDevices([
                 { id: '1', imei: 'test-device-id-001', model: 'Flutter Emulator', status: 'UNLOCKED' },

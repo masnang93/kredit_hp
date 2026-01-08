@@ -7,6 +7,7 @@ const Sidebar = ({ activeTab, setActiveTab, onLogout }) => {
         { id: 'loans', label: 'Kelola Tagihan', icon: <CreditCard size={20} /> },
         { id: 'transactions', label: 'Riwayat Transaksi', icon: <CreditCard size={20} /> },
         { id: 'settings', label: 'Settings', icon: <Settings size={20} /> },
+        { id: 'debug', label: 'Debug System', icon: <Smartphone size={20} /> },
     ];
 
     return (

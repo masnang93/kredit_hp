@@ -4,6 +4,7 @@ import Dashboard from './components/Dashboard';
 import Settings from './components/Settings';
 import LoanManager from './components/LoanManager';
 import Transactions from './components/Transactions';
+import DebugPage from './components/DebugPage';
 import Login from './components/Login';
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
                     {activeTab === 'loans' && <LoanManager />}
                     {activeTab === 'transactions' && <Transactions />}
                     {activeTab === 'settings' && <Settings />}
+                    {activeTab === 'debug' && <DebugPage />}
                 </div>
             </main>
         </div>
