@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import api from '../api';
 import { Smartphone, Lock, Unlock, RefreshCw, AlertCircle, MapPin, User, X, Phone, CreditCard, Edit2, Save } from 'lucide-react';
 
 const Dashboard = () => {
